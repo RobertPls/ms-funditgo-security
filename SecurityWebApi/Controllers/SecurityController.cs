@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Security.Application.Dto;
-using Security.Application.Services;
+using Security.Application.UseCase.Command.Security.Login;
+using Security.Application.UseCase.Command.Security.RegistrarUsuario;
+using Security.Application.UseCase.Query.Usuarios;
 
 namespace SecurityWebApi.Controllers
 {
@@ -9,19 +11,20 @@ namespace SecurityWebApi.Controllers
     [ApiController]
     public class SecurityController : ControllerBase
     {
-        private readonly ISecurityService _securityService;
+        private readonly IMediator _mediator;
 
-        public SecurityController(ISecurityService securityService)
+
+        public SecurityController(IMediator mediator)
         {
-            _securityService = securityService;
+            _mediator = mediator;
         }
 
         [AllowAnonymous]
         [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> Login([FromBody] LoginUserDto model)
+        public async Task<IActionResult> Login([FromBody] LoginCommand command)
         {
-            var result = await _securityService.Login(model.Username, model.Password);
+            var result = await _mediator.Send(command);
 
             if (result.Success)
             {
@@ -37,10 +40,15 @@ namespace SecurityWebApi.Controllers
         }
         [AllowAnonymous]
         [HttpPost]
-        [Route("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterAplicationUserModel model)
+        [Route("registrar-comun")]
+        public async Task<IActionResult> RegistrarComun([FromBody] RegistrarUsuarioCommand command)
         {
-            var result = await _securityService.Register(model, false, false);
+            command.Roles.Clear();
+            command.Roles.Add("CommonUser");
+            command.isAdmin = false;
+            command.emailConfirmationRequired = false;
+
+            var result = await _mediator.Send(command);
 
             if (result.Success)
             {
@@ -55,7 +63,52 @@ namespace SecurityWebApi.Controllers
             }
         }
 
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("registrar-administrador")]
+        public async Task<IActionResult> RegistrarAdministrador([FromBody] RegistrarUsuarioCommand command)
+        {
+            command.Roles.Clear();
+            command.Roles.Add("Administrator");
+            command.isAdmin= true;
+            command.emailConfirmationRequired = false;
 
+            var result = await _mediator.Send(command);
+
+            if (result.Success)
+            {
+                return Ok(new
+                {
+                    result
+                });
+            }
+            else
+            {
+                return Unauthorized();
+            }
+        }
+
+        [AllowAnonymous]
+        [Route("administradores")]
+        [HttpGet]
+        public async Task<IActionResult> BuscarUsuarioAdministrador()
+        {
+            var query = new GetListaUsuarioQuery();
+            query.Rol = "Administrator";
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+
+        [AllowAnonymous]
+        [Route("comunes")]
+        [HttpGet]
+        public async Task<IActionResult> BuscarUsuarioComun()
+        {
+            var query = new GetListaUsuarioQuery();
+            query.Rol = "CommonUser";
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
 
     }
 }

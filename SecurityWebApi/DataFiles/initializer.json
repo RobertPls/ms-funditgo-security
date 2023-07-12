@@ -8,6 +8,14 @@
         { "permission": "ADMIN_DONACIONES" },
         { "permission": "ADMIN_REQUISITOS" }
       ]
+    },
+    {
+      "role": "CommonUser",
+      "permissions": [
+        { "permission": "CREATE_PROYECTOS" },
+        { "permission": "CREATE_DONACIONES" },
+        { "permission": "CREATE_COMENTARIOS" }
+      ]
     }
   ],
   "users": [

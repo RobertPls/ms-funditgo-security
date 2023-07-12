@@ -1,13 +1,14 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using MassTransit;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using Security.Application.Services;
+using Security.Application;
 using Security.Infrastructure.EntityFramework;
 using Security.Infrastructure.Security;
-using Security.Infrastructure.Services;
+using System.Reflection;
 using System.Text;
 
 namespace Security.Infrastructure
@@ -63,10 +64,24 @@ namespace Security.Infrastructure
 
 
             services.AddScoped<SecurityInitializer>();
-            services.AddScoped<ISecurityService, SecurityService>();
-
         }
+        public static void AddRabbitMq(this IServiceCollection services, IConfiguration configuration)
+        {
+            var rabbitMqHost = configuration["RabbitMq:Host"];
+            var rabbitMqPort = configuration["RabbitMq:Port"];
+            var rabbitMqUserName = configuration["RabbitMq:UserName"];
+            var rabbitMqPassword = configuration["RabbitMq:Password"];
 
+            services.AddMassTransit(config =>
+            {
+                config.UsingRabbitMq((context, cfg) =>
+                {
+                    var uri = string.Format("amqps://{0}:{1}@{2}:{3}", rabbitMqUserName, rabbitMqPassword, rabbitMqHost, rabbitMqPort);
+                    cfg.Host(uri);                 
+                });
+            }
+            );
+        }
         public static void AddDatabase(IServiceCollection services, IConfiguration configuration)
         {
             var connectionString = configuration.GetConnectionString("DbConnectionString");
@@ -80,9 +95,11 @@ namespace Security.Infrastructure
 
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-
+            services.AddMediatR(configuration => configuration.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
+            services.AddAplication();
             AddDatabase(services, configuration);
             AddSecurity(services, configuration);
+            AddRabbitMq(services, configuration);
 
             return services;
         }

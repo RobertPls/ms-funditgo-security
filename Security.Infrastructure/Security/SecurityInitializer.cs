@@ -146,7 +146,7 @@ namespace Security.Infrastructure.Security
                 if (user == null)
                 {
                     // User doesnt exist so we create it
-                    user = new ApplicationUser(userJson.user.ToString(), userJson.user.ToString(), userJson.user.ToString(), true, true);
+                    user = new ApplicationUser(userJson.user.ToString(), userJson.user.ToString(), userJson.user.ToString(), userJson.email.ToString(), new DateTime(2000,01,01), true, true);
 
                     IdentityResult userCreated = await _userManager.CreateAsync(user, userJson.password.ToString());
                     if (!userCreated.Succeeded)

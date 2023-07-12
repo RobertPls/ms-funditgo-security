@@ -22,5 +22,23 @@
     "Module": "Requisitos",
     "Name": "Requisito Management",
     "Description": "Permite al usuario adminisrar los requisitos."
+  },
+  {
+    "Mnemonic": "CREATE_PROYECTOS",
+    "Module": "Proyectos",
+    "Name": "Crear Proyectos",
+    "Description": "Permite al usuario comun crear proyectos."
+  },
+  {
+    "Mnemonic": "CREATE_DONACIONES",
+    "Module": "Proyectos",
+    "Name": "Crear Donaciones",
+    "Description": "Permite al usuario comun crear donaciones."
+  },
+  {
+    "Mnemonic": "CREATE_COMENTARIOS",
+    "Module": "Proyectos",
+    "Name": "Crear Comentarios",
+    "Description": "Permite al usuario comun crear comentarios."
   }
 ] 

@@ -12,7 +12,7 @@ using Security.Infrastructure.EntityFramework;
 namespace Security.Infrastructure.EntityFramework.Migrations
 {
     [DbContext(typeof(SecurityDbContext))]
-    [Migration("20230625201648_InitialStructure")]
+    [Migration("20230712092759_InitialStructure")]
     partial class InitialStructure
     {
         /// <inheritdoc />
@@ -175,11 +175,15 @@ namespace Security.Infrastructure.EntityFramework.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<DateTime>("FechaNacimiento")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
