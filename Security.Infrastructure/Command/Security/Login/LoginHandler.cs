@@ -86,6 +86,8 @@ namespace Security.Infrastructure.Command.Security.Login
             authClaims.Add(new Claim("FullName", user.FullName));
             authClaims.Add(new Claim("UserName", user.UserName));
             authClaims.Add(new Claim("IsStaff", user.Staff.ToString()));
+            authClaims.Add(new Claim("UserId", user.Id.ToString()));
+
 
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtOptions.SecretKey));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
