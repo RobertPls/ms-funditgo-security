@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Security.Infrastructure.EntityFramework
+namespace Infrastructure.EntityFramework
 {
     internal sealed class DbInitializer : IHostedService
     {

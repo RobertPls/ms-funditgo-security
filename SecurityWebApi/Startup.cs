@@ -1,5 +1,5 @@
 ﻿using Microsoft.OpenApi.Models;
-using Security.Infrastructure;
+using Infrastructure;
 
 namespace SecurityWebApi
 {
@@ -18,7 +18,7 @@ namespace SecurityWebApi
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Security.WebApi", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApi", Version = "v1" });
             });
         }
 

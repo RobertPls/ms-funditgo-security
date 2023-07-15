@@ -1,4 +1,4 @@
-﻿namespace Security.Application.Dto.Usuarios
+﻿namespace Application.Dto.Usuarios
 {
     public class UsuarioDto
     {

@@ -1,10 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
-using Security.Application.Dto.Usuarios;
-using Security.Application.UseCase.Query.Usuarios;
-using Security.Infrastructure.Security;
+using Application.Dto.Usuarios;
+using Application.UseCase.Query.Usuarios;
+using Infrastructure.Security;
 
-namespace Security.Infrastructure.Query.Usuarios
+namespace Infrastructure.Query.Usuarios
 {
     internal class GetListaUsuarioHandler : IRequestHandler<GetListaUsuarioQuery, IEnumerable<UsuarioDto>>
     {

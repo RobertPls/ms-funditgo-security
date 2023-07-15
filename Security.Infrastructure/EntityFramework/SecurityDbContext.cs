@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Security.Infrastructure.Security;
+using Infrastructure.Security;
 
-namespace Security.Infrastructure.EntityFramework
+namespace Infrastructure.EntityFramework
 {
     public class SecurityDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, Guid>
     {

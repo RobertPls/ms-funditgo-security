@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace Security.Application
+namespace Application
 {
     public static class Extensions
     {

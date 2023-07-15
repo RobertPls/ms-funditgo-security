@@ -2,14 +2,14 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using Security.Application.UseCase.Command.Security.Login;
-using Security.Application.Utils;
-using Security.Infrastructure.Security;
+using Application.UseCase.Command.Security.Login;
+using Application.Utils;
+using Infrastructure.Security;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace Security.Infrastructure.Command.Security.Login
+namespace Infrastructure.Command.Security.Login
 {
     public class LoginHandler : IRequestHandler<LoginCommand, Result<string>>
     {

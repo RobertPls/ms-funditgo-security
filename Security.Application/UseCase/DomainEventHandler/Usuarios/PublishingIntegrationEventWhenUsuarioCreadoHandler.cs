@@ -1,9 +1,9 @@
 ﻿using MassTransit;
 using MediatR;
 using Security.Domain.Event.Usuarios;
-using SharedKernel.Core;
+using Shared.Core;
 
-namespace Security.Application.UseCase.DomainEventHandler.Proyectos
+namespace Application.UseCase.DomainEventHandler.Proyectos
 {
     public class PublishingIntegrationEventWhenUsuarioCreadoHandler : INotificationHandler<ConfirmedDomainEvent<UsuarioCreado>>
     {

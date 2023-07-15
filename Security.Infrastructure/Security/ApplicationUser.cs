@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using SharedKernel.Core;
+using Shared.Core;
 
-namespace Security.Infrastructure.Security
+namespace Infrastructure.Security
 {
     public class ApplicationUser : IdentityUser<Guid>
     {

@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using Security.Application.Utils;
+using Application.Utils;
 
-namespace Security.Application.UseCase.Command.Security.RegistrarUsuario
+namespace Application.UseCase.Command.Security.RegistrarUsuario
 {
     public record RegistrarUsuarioCommand : IRequest<Result>
     {

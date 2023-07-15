@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Security.Infrastructure.Security
+namespace Infrastructure.Security
 {
     /// <summary>
     /// To create new permissions all you have to do is include the new mnemonic in the list of the 

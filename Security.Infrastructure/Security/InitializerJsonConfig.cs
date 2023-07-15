@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Security.Infrastructure.Security
+namespace Infrastructure.Security
 {
     public class InitializerJsonConfig
     {

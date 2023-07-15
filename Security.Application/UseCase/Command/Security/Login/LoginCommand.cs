@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using Security.Application.Utils;
+using Application.Utils;
 
-namespace Security.Application.UseCase.Command.Security.Login
+namespace Application.UseCase.Command.Security.Login
 {
     public record LoginCommand : IRequest<Result<string>>
     {

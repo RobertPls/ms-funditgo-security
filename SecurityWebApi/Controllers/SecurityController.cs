@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Security.Application.UseCase.Command.Security.Login;
-using Security.Application.UseCase.Command.Security.RegistrarUsuario;
-using Security.Application.UseCase.Query.Usuarios;
+using Application.UseCase.Command.Security.Login;
+using Application.UseCase.Command.Security.RegistrarUsuario;
+using Application.UseCase.Query.Usuarios;
 
 namespace SecurityWebApi.Controllers
 {

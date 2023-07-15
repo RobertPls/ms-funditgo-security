@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using Security.Application;
-using Security.Infrastructure.EntityFramework;
-using Security.Infrastructure.Security;
+using Application;
+using Infrastructure.EntityFramework;
+using Infrastructure.Security;
 using System.Reflection;
 using System.Text;
 
-namespace Security.Infrastructure
+namespace Infrastructure
 {
     public static class Extensions
     {

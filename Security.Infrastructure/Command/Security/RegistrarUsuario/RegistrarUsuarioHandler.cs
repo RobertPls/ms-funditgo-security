@@ -1,13 +1,13 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
-using Security.Application.UseCase.Command.Security.RegistrarUsuario;
-using Security.Application.Utils;
+using Application.UseCase.Command.Security.RegistrarUsuario;
+using Application.Utils;
 using Security.Domain.Event.Usuarios;
-using Security.Infrastructure.Security;
-using SharedKernel.Core;
+using Infrastructure.Security;
+using Shared.Core;
 
-namespace Security.Infrastructure.Command.Security.RegistrarUsuario
+namespace Infrastructure.Command.Security.RegistrarUsuario
 {
     public class RegistrarUsuarioHandler : IRequestHandler<RegistrarUsuarioCommand, Result>
     {
