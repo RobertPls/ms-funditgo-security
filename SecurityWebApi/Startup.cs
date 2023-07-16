@@ -14,6 +14,17 @@ namespace SecurityWebApi
         {
             services.AddInfrastructure(Configuration);
             services.AddControllers();
+            
+            
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.SetIsOriginAllowed(_ => true)
+                                      .AllowAnyMethod()
+                                      .AllowAnyHeader()
+                                      .AllowCredentials());
+            });
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen(c =>
