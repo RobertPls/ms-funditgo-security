@@ -6,7 +6,7 @@
         { "permission": "ADMIN_SEC" },
         { "permission": "ADMIN_PROYECTOS" },
         { "permission": "ADMIN_DONACIONES" },
-        { "permission": "ADMIN_REQUISITOS" }
+        { "permission": "ADMIN_CONFIGURACION" }
       ]
     },
     {

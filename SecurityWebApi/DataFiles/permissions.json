@@ -18,10 +18,10 @@
     "Description": "Permite al usuario adminisrar las donaciones."
   },
   {
-    "Mnemonic": "ADMIN_REQUISITOS",
-    "Module": "Requisitos",
-    "Name": "Requisito Management",
-    "Description": "Permite al usuario adminisrar los requisitos."
+    "Mnemonic": "ADMIN_CONFIGURACION",
+    "Module": "Configuracion",
+    "Name": "Configuracion Management",
+    "Description": "Permite al usuario adminisrar las configuraciones para los proyectos."
   },
   {
     "Mnemonic": "CREATE_PROYECTOS",
